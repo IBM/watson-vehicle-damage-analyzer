@@ -1,0 +1,8 @@
+id: watson-vehicle-damage-analyzer
+event_id: web
+event_organizer: dev-journeys
+runtimes:
+  - Cloud Foundry
+services:
+  - Visual Recognition
+language: nodejs
