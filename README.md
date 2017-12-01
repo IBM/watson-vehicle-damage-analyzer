@@ -59,7 +59,7 @@ To complete the installation, perform the following steps:
 Clone the `watson-vehicle-damage-analyzer` repo locally. In a terminal, run:
 
 ```
-$ git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git 
+$ git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git
 $ cd watson-vehicle-damage-analyzer
 ```
 
