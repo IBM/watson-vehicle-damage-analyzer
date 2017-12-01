@@ -32,15 +32,15 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 
 This journey contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone.
 
-## Deploy the Server Application to Bluemix
+## Deploy the Server Application to IBM Cloud
 
-1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
+1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed.
 
 ![Toolchain pipeline](doc/source/images/toolchain-pipeline.png)
 
-3. To see the app and services created and configured for this journey, use the Bluemix dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wcc-` prefix:
+3. To see the app and services created and configured for this journey, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wcc-` prefix:
     * wcc-visual-recognition
 
 > Note: Make note of the `watson-vehicle-damage-analyzer` URL route - it will be required for later use in the mobile app.
@@ -239,7 +239,7 @@ $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/s
 
 # Privacy Notice
 
-If using the Deploy to Bluemix button some metrics are tracked, the following information is sent to a [Metrics Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
+If using the Deploy to IBM Cloud button some metrics are tracked, the following information is sent to a [Metrics Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
 
 * Node.js package version
 * Node.js repository URL
@@ -253,7 +253,7 @@ If using the Deploy to Bluemix button some metrics are tracked, the following in
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-This data is collected from the `package.json` and `repository.yaml` files in the sample application and the ``VCAP_APPLICATION`` and ``VCAP_SERVICES`` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Metrics Tracker service will be tracked.
+This data is collected from the `package.json` and `repository.yaml` files in the sample application and the ``VCAP_APPLICATION`` and ``VCAP_SERVICES`` environment variables in IBM Cloud and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM IBM Cloud to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Metrics Tracker service will be tracked.
 
 ## Disabling Deployment Tracking
 
