@@ -1,0 +1,4 @@
+# Mac OS
+.DS_Store
+mobile/node_modules
+server/node_modules
