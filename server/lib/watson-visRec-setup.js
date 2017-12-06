@@ -44,7 +44,7 @@ WatsonVisRecSetup.prototype.getVisRecList = function(params) {
   return new Promise((resolve, reject) => {
     this.vizRecClient.listClassifiers({}, (err,response) => {
       if (err) {
-        console.log('Failed to get VisualRecognition classifier. Proceed to create one.');
+        console.log('Failed to get VisualRecognition classifier. Proceed to create one. Error: ' + err);
         return resolve(params);
       } else {
         const classifiers = response.classifiers;
