@@ -1,22 +1,25 @@
-# Work In Progress - Not Ready for General Use
-## This is a work in progress and is not ready to use. Please re-visit in 1-2 weeks for the completed code pattern
-
 ![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/8ef3c79f843535f3cff63dba2b4d7ac5/badge.svg)
 
-In this developer journey, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
+In this developer code pattern, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
+The server application will use pictures of auto accidents and other incidents to train Watson Visual Recognition to identify various classes of issues, i.e. vandalism, broken windshield, motorcycle accidnet, or flat tire. A developer can leverage this to create their own custom Visual Recognition classifiers for their use cases.
 
 Currently this mobile app only runs on Android, but can be easily ported to iOS.
 
+When the reader has completed this Code Pattern, they will understand how to:
+
+* Create a Node.js server that can utilize the Watson Visual Recognition service for classifying images.
+* Have a server initialize a Visual Recognition custom classifier at startup.
+* Create a Visual Recognition custom classifier in an application.
+* Create an Android mobile application that can send pictures to a server app for classification using Visual Recognition.
+
+![](doc/source/images/architecture.png)
 
 ## Flow
 
 1. User interacts with the mobile app and captures an image.
-2. The image is passed to the server application which uses Watson Visual Recognition Service to analyze the images.
-3. Data is returned to the mobile app for display.
-
-## With Watson
-
-Want to take your Watson app to the next level? Looking to leverage Watson Brand assets? Join the [With Watson](https://www.ibm.com/watson/with-watson/) program which provides exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
+2. The image on the mobile phone is passed to the server application running in the cloud.
+3. The server sends the image to Watson Visual Recognition Service for analysis.
+4. Visual Recognition service classifies the image and returns the information to the server.
 
 ## Included components
 
@@ -31,7 +34,7 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 
 # Steps
 
-This journey contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone.
+This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone.
 
 ## Deploy the Server Application to IBM Cloud
 
@@ -43,8 +46,8 @@ This journey contains several pieces. The app server communicates with the Watso
 
 ![Toolchain pipeline](doc/source/images/toolchain-pipeline.png)
 
-3. To see the app and services created and configured for this journey, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wcc-` prefix:
-    * wcc-visual-recognition
+3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wvda-` prefix:
+    * wvda-visual-recognition
 
 > Note: Make note of the `watson-vehicle-damage-analyzer` URL route - it will be required for later use in the mobile app.
 
@@ -71,31 +74,16 @@ $ cd watson-vehicle-damage-analyzer
 Edit `mobile/www/config.json` and update the setting with the values retrieved previously.
 
 ```javascript
-"BLUEMIX_SERVER_URL": "<add-bluemix-server-url>"
+"SERVER_URL": "<add-bluemix-server-url>"
 ```
 
 ## 3. Install dependencies to build the mobile application
 
-Building the mobile application requires a few dependencies that you can either manually install yourself, **or** you can use [Docker](https://docs.docker.com/engine/installation/).
-
-### Using Docker
-
-```
-$ cd watson-vehicle-damage-analyzer/mobile
-$ docker build -t calorie-counter .
-[truncated output]
-Successfully built <image-id>
-```
-
-You can then use `cordova` by running the image, mounting the repository's `mobile/` directory to `/mobile` in the container:
-
-```
-$ docker run --volume "watson-vehicle-damage-analyzer/mobile:/mobile" calorie-counter cordova --help
-```
+Building the mobile application requires a few dependencies that you need to manually install yourself.
 
 ### Using manually-installed dependencies
 
-For this journey, you'll need to install the prerequisites, by following their respective documentation:
+For this code pattern, you'll need to install the prerequisites, by following their respective documentation:
 
 * [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Node.js and npm](https://nodejs.org/en/download/) (`npm` version 4.5.0 or higher)
@@ -117,18 +105,28 @@ Once you have completed all of the required installs and setup, you should have 
 * `ANDROID_HOME`
 * `PATH`
 
-> Note: For additonal help setting these environment variables, refer to the  [Troubleshooting](#troubleshooting) section below.
+* How to determine proper values for environment variables:
+
+Open `Android Studio` and navigate to `File` -> `Project Structure` -> `SDK
+Location`. This location value will serve as the base for your environement variables. For example, if the location is `/users/joe/Android/sdk`, then:
+
+```
+$ export ANDROID_HOME=/users/joe/Android/sdk
+$ export ANDROID_SDK_HOME=/users/joe/Android/sdk/platforms/android-<api-level>
+$ export JAVA_HOME=`/usr/libexec/java_home`
+```
+
+get the exact path for JAVA_HOME:
+/usr/libexec/java_home
+
+For our example, we then add these to $PATH. (your locations may vary)
+```
+$ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
+```
 
 ## 4. Add Android platform and plug-ins
 
-If you're using Docker, then you'll need to run *all* of the `cordova` commands inside your Docker container. Adjust the path for `watson-vehicle-damage-analyzer/mobile` based on your present working directory.For example:
-
-```
-$ docker run \
-  --volume="watson-vehicle-damage-analyzer/mobile:/mobile" \
-  calorie-counter \
-  cordova --help
-```
+Adjust the path for `watson-vehicle-damage-analyzer/mobile` based on your present working directory.
 
 Start by adding the Android platform as the target for your mobile app.
 
@@ -162,8 +160,6 @@ For Mac users, [Android File Transfer](https://www.android.com/filetransfer/) wi
 
 ## 6. Build and run the mobile app
 
-> Note: If you're using Docker, remember to prefix all your `cordova` commands with `docker …`.
-
 ```
 $ cd watson-vehicle-damage-analyzer/mobile
 $ cordova build android
@@ -177,39 +173,11 @@ You can then either manually transfer the `.apk` to your device and run it yours
 $ cordova run android
 ```
 
-However, a Docker container does not have access to your host's USB devices, unless you explicitly allow them to be passed through. You can expose your device to the Docker container, and allow Cordova to do the transfer for you. To accomplish that, you'll need to know which USB device to pass through. Discover your USB devices with `lsusb`.
-
-For example, in this case, I know that my Android device is `Bus 001, Device 002`:
-
-```
-$ lsusb
-Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 001 Device 003: ID 046d:082d Logitech, Inc. HD Pro Webcam C920
-Bus 001 Device 002: ID 18d1:4ee6 Google Inc.
-Bus 001 Device 005: ID 046d:c085 Logitech, Inc.
-Bus 001 Device 004: ID 045e:02e6 Microsoft Corp.
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-```
-
-I can then pass my device through to the container using `--device=/dev/bus/usb/<bus-number>/<device-number>` and allow Cordova to access it. The complete Docker command would then be:
-
-```
-$ docker run \
-  --volume="watson-vehicle-damage-analyzer/mobile:/mobile" \
-  --device=/dev/bus/usb/001/002 \
-  calorie-counter \
-  cordova run android
-```
-
-At this point, the app named `Calorie Counter` should be on your mobile device. Use the camera icon to take a photo of a food item, and allow Watson to analyze the image and fetch the calorie results.
+At this point, the app named `Watson Vehicle Damage Analyzer` should be on your mobile device. Use the camera icon to take a photo of an automobile windshield, tire, vandalism, or of a motorcycle. The mobile application will send the image to the server after you click on the `check mark`, and the server will use Watson to analyze the image and fetch the results.
 
 # Sample Output
 
-<img src="doc/source/images/output1.jpg" width="250">  <img src="doc/source/images/output2.jpg" width="250">
-
-# Links
-
-* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+<img src="doc/source/images/output1.png" width="250">
 
 # Troubleshooting
 
@@ -221,24 +189,38 @@ At this point, the app named `Calorie Counter` should be on your mobile device. 
 
 > Ensure that your phone is plugged into your computer and you can access it from the Android File Transfer utility (see Step #6 above).
 
-* How to determine proper values for environment variables:
-
-Open `Android Studio` and navigate to `File` -> `Project Structure` -> `SDK
-Location`. This location value will serve as the base for your environement variables. For example, if the location is `/users/joe/Android/sdk`, then:
-
-```
-$ export ANDROID_HOME=/users/joe/Android/sdk
-$ export ANDROID_SDK_HOME=/users/joe/Android/sdk/platforms/android-<api-level>
-$ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools
-```
-
 * Error: Server error, status code: 502, error code: 10001, message: Service broker error: {"description"=>"Only one free key is allowed per organization. Contact your organization owner to obtain the key."}
 
 > Only one free key is allowed per organization. Binding the service to an application triggers a process that tries to allocate a new key,which will get rejected. If you already have an instance of Visual Recognition and an associated key, you can bind that instance to your application or update the API key in your server code to tell the app which key to use.
 
-# License
+* Deploy or Dashboard shows app is not running
 
-[Apache 2.0](LICENSE)
+> You may see logs in the Deploy Stage that indicate that the app has crashed and cannot start:
+```
+Starting app watson-vehicle-damage-analyzer-20171206202105670 in org scott.dangelo / space dev as scott.dangelo@ibm.com...
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 crashed
+FAILED
+Error restarting application: Start unsuccessful
+
+TIP: use 'cf logs watson-vehicle-damage-analyzer-20171206202105670 --recent' for more information
+
+Finished: FAILED
+```
+
+> OR you may see in the IBM Cloud console that the app is `Not Running`:
+
+![App not running](doc/source/images/app-not-running.png)
+
+> Both of these can be spurious errors. Click the `Visit App URL` link in the IBM Cloud console, or try `Runtime -> SSH`, or simply test the app to see if it is running.
 
 # Privacy Notice
 
@@ -261,3 +243,17 @@ This data is collected from the `package.json` and `repository.yaml` files in th
 ## Disabling Deployment Tracking
 
 To disable tracking, simply remove `require("metrics-tracker-client").track();` from the [server/app.js](server/app.js) file.
+
+# Links
+* [Demo on Youtube]
+* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+
+# Learn more
+
+* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
+* **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
+* **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
+
+# License
+
+[Apache 2.0](LICENSE)
