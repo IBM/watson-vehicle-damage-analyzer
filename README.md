@@ -1,6 +1,7 @@
 # Work In Progress - Not Ready for General Use
 ## This is a work in progress and is not ready to use. Please re-visit in 1-2 weeks for the completed code pattern
 
+![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/8ef3c79f843535f3cff63dba2b4d7ac5/badge.svg)
 
 In this developer journey, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
 
@@ -33,6 +34,8 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 This journey contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone.
 
 ## Deploy the Server Application to IBM Cloud
+
+[![Deploy to IBM Cloud](https://metrics-tracker.mybluemix.net/stats/8ef3c79f843535f3cff63dba2b4d7ac5/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
 1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
