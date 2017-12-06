@@ -1,0 +1,106 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-cache-clear",
+        "scope": null,
+        "escapedName": "cordova-plugin-cache-clear",
+        "name": "cordova-plugin-cache-clear",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/riya/Desktop/hello/node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-cache-clear@latest",
+  "_id": "cordova-plugin-cache-clear@1.3.7",
+  "_inCache": true,
+  "_location": "/cordova-plugin-cache-clear",
+  "_nodeVersion": "6.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-cache-clear-1.3.7.tgz_1495766770413_0.45240928535349667"
+  },
+  "_npmUser": {
+    "name": "anrip",
+    "email": "mail@anrip.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-cache-clear",
+    "scope": null,
+    "escapedName": "cordova-plugin-cache-clear",
+    "name": "cordova-plugin-cache-clear",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-cache-clear/-/cordova-plugin-cache-clear-1.3.7.tgz",
+  "_shasum": "65575de39b3073150da1362e99367087accf8920",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-cache-clear",
+  "_where": "/Users/riya/Desktop/hello/node_modules",
+  "author": {
+    "name": "Anrip Wong",
+    "email": "mail@anrip.com",
+    "url": "http://www.anrip.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/anrip/cordova-plugin-cache-clear/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-cache-clear",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "This is a WebView cache plugin for Cordova 6.1.1+ supporting Android (>=4.1) and iOS(>=6.0). It allows to clear the cordova webview cache.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "65575de39b3073150da1362e99367087accf8920",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-cache-clear/-/cordova-plugin-cache-clear-1.3.7.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.1.1"
+    }
+  ],
+  "gitHead": "7598ff1bbc20a3cfc1daeb37eca1605d1fe370da",
+  "homepage": "https://github.com/anrip/cordova-plugin-cache-clear",
+  "keywords": [
+    "cordova",
+    "webview",
+    "cache",
+    "clear",
+    "ios",
+    "android",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "Apache License Version 2.0",
+  "maintainers": [
+    {
+      "name": "anrip",
+      "email": "mail@anrip.com"
+    }
+  ],
+  "name": "cordova-plugin-cache-clear",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anrip/cordova-plugin-cache-clear.git"
+  },
+  "scripts": {},
+  "version": "1.3.7"
+}
