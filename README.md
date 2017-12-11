@@ -32,6 +32,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Watch the Video
 
+[![](https://i.ytimg.com/vi/rVL1HsbsdBI/0.jpg)](https://youtu.be/rVL1HsbsdBI)
+
 # Steps
 
 This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
@@ -277,7 +279,7 @@ This data is collected from the `package.json` and `repository.yaml` files in th
 To disable tracking, simply remove `require("metrics-tracker-client").track();` from the [server/app.js](server/app.js) file.
 
 # Links
-* [Demo on Youtube]
+* [Demo on Youtube](https://youtu.be/rVL1HsbsdBI)
 * [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
 
 # Learn more
