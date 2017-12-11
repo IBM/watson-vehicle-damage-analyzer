@@ -34,31 +34,35 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Steps
 
-This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone.
+This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
 
 ## Deploy the Server Application to IBM Cloud
 
 [![Deploy to IBM Cloud](https://metrics-tracker.mybluemix.net/stats/8ef3c79f843535f3cff63dba2b4d7ac5/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
+1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy`` and then jump to step #5.
 
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed.
+If you are interested in the deploy to of the application, in Toolchains, click on Delivery Pipeline to watch while the app is deployed.
 
 ![Toolchain pipeline](doc/source/images/toolchain-pipeline.png)
 
-3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wvda-` prefix:
+To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wvda-` prefix:
     * wvda-visual-recognition
 
 > Note: Make note of the `watson-vehicle-damage-analyzer` URL route - it will be required for later use in the mobile app.
 
-To complete the installation, perform the following steps:
+## Deploy the Server Application locally
+ Perform steps 1-9:
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Update config values for the Mobile App](#3-update-config-values-for-the-mobile-app)
-3. [Install dependencies to build the mobile application](#4-install-dependencies-to-build-the-mobile-application)
-4. [Add Android platform and plug-ins](#5-add-android-platform-and-plug-ins)
-5. [Setup your Android device](#6-setup-your-android-device)
-6. [Build and run the mobile app](#7-build-and-run-the-mobile-app)
+2. [Create the Watson Visual Recognition service](#2-create-visual-recognition-service)
+3. [Add Visual Recoginition API key to .env file](#3-add-api-key)
+4. [Install dependencies and run server](#4-install-dependencies-and-run)
+5. [Update config values for the Mobile App](#3-update-config-values-for-the-mobile-app)
+6. [Install dependencies to build the mobile application](#4-install-dependencies-to-build-the-mobile-application)
+7. [Add Android platform and plug-ins](#5-add-android-platform-and-plug-ins)
+8. [Setup your Android device](#6-setup-your-android-device)
+9. [Build and run the mobile app](#7-build-and-run-the-mobile-app)
 
 ## 1. Clone the repo
 
@@ -68,16 +72,44 @@ Clone the `watson-vehicle-damage-analyzer` repo locally. In a terminal, run:
 $ git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git
 $ cd watson-vehicle-damage-analyzer
 ```
+## 2. Create the following service and name it `wvda-visual-recognition`:
 
-## 2. Update config values for the Mobile App
+  * [**Watson Visual Recognition**](https://console-regional.ng.bluemix.net/catalog/services/visual-recognition)
+
+## 3. Add Visual Recoginition API key to .env file
+
+When you create the Visual Recognition service, you will need the API key
+![](doc/source/images/apiKey.png)
+
+Move the watson-vehicle-damage-analyzer/server/env.example file to ``/.env`` and populate the API key:
+
+```
+# Watson Visual Recognition
+VISUAL_RECOGNITION_API_KEY=<add_api_key>
+```
+
+### 4. Install dependencies and run server
+
+#### If you used the Deploy to IBM Cloud button...
+
+If you used ``Deploy to IBM Cloud``, the setup is automatic.
+
+#### If you decided to run the app locally...
+
+```
+$ npm install
+$ npm start
+```
+
+## 5. Update config values for the Mobile App
 
 Edit `mobile/www/config.json` and update the setting with the values retrieved previously.
 
 ```javascript
-"SERVER_URL": "<add-bluemix-server-url>"
+"SERVER_URL": "put_server_url_here"
 ```
 
-## 3. Install dependencies to build the mobile application
+## 6. Install dependencies to build the mobile application
 
 Building the mobile application requires a few dependencies that you need to manually install yourself.
 
@@ -99,13 +131,13 @@ You'll need to install the specific SDK appropriate for your mobile device. From
 * Select Android 6.0 (Marshmallow) (API Level 23).
 * Click apply to download and install.
 
-Once you have completed all of the required installs and setup, you should have the following environment variables set appropriately for your platform:
+Once you have completed all of the required installs and setup, you will need the following environment variables set appropriately for your platform:
 
 * `JAVA_HOME`
 * `ANDROID_HOME`
-* `PATH`
+* `ANDROID_SDK_HOME`
 
-* How to determine proper values for environment variables:
+#### How to determine proper values for environment variables:
 
 Open `Android Studio` and navigate to `File` -> `Project Structure` -> `SDK
 Location`. This location value will serve as the base for your environement variables. For example, if the location is `/users/joe/Android/sdk`, then:
@@ -124,7 +156,7 @@ For our example, we then add these to $PATH. (your locations may vary)
 $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 ```
 
-## 4. Add Android platform and plug-ins
+## 7. Add Android platform and plug-ins
 
 Adjust the path for `watson-vehicle-damage-analyzer/mobile` based on your present working directory.
 
@@ -148,7 +180,7 @@ $ cordova plugin add cordova-plugin-camera
 $ cordova plugin add cordova-plugin-file-transfer
 ```
 
-## 5. Setup your Android device
+## 8. Setup your Android device
 
 In order to run the application on your Android device, you will need to be prepared to transfer the application's `.apk` file to your device (created in the next step). There are multiple ways for developers to achieve this.
 
@@ -158,7 +190,7 @@ Android Studio will handle the transfer for you if you tether your Android devic
 
 For Mac users, [Android File Transfer](https://www.android.com/filetransfer/) will facilitate simple file transfers between your computer and Android device.
 
-## 6. Build and run the mobile app
+## 9. Build and run the mobile app
 
 ```
 $ cd watson-vehicle-damage-analyzer/mobile
