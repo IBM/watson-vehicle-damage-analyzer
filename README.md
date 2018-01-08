@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
 ![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/8ef3c79f843535f3cff63dba2b4d7ac5/badge.svg)
 
 In this developer code pattern, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
