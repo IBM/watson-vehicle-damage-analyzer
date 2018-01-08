@@ -1,0 +1,14 @@
+language: node_js
+dist: trusty
+sudo: required
+node_js: 6
+before_script: cd server/
+script:
+- npm install
+- npm test
+cache:
+  directories:
+  - node_modules
+env:
+  global:
+    - secure: nYWdciE2i4QMJhIfKskxAQAa4dAyXP8nnNXCgpdPhucWOgzV+ECNoIRiohuQJg04v/JZFGH+bRx+aJZH/a1tjjsnuoLelXoLRYWARox3WErNT+SLZzLKYBdiyGsnkofSickJP140yIvkSqDPc+8GTG3vFKb3t8idHqbV1CLd2PTNPxPVttskmIehOwwPLwbIjnpaoL5CCXMapLHixVqOqDzLBn0JmAmxr9rn2OfczJ+1Ef7L4W+B1t2mv3ItimpkRWVYUX01UsjsRqNY5xq2YLNGXO/g+upk/6OcVWY1cR4MnELUr7XQSpZMWRHIACedPCdQlA2GDVCqjy7LImtAvlgmgYYsI9zm/HTSEDNNySVSLVaz5uVzVlthUdw6NghhFg4TJVzehFpU39OHxRnabjNfdcbmVqPIcQQHrUW0lXno5ALs6M1ZnbvR8sAebu5aFjck1TWZeGVJMjWTGLt+CGfZxjE8X9EoWdEMpN8a/V282QXebuXVrARKz5P6IBJLNOCkzjShzJQITStYdKSRxcaNLg2FURXtZju9aZQTP1aBsAwBHh15UrfK640oGxwC2stAhXO4w3D3r+0dOU3/8NIiEcHo4D5eJaBhvwLazGmF5DX1rOFy4KegTGr4lVyIM3/3bVbfp+hYCGcPIdUV1CzIqnEUynvBEnYdLLQNk+I=
