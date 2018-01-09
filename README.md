@@ -93,7 +93,7 @@ Move the watson-vehicle-damage-analyzer/server/env.example file to ``/.env`` and
 VISUAL_RECOGNITION_API_KEY=<add_api_key>
 ```
 
-### 4. Install dependencies and run server
+## 4. Install dependencies and run server
 
 #### If you used the Deploy to IBM Cloud button...
 
