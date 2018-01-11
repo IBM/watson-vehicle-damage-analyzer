@@ -60,14 +60,14 @@ To see the app and services created and configured for this code pattern, use th
  Perform steps 1-9:
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create the Watson Visual Recognition service](#2-create-visual-recognition-service)
-3. [Add Visual Recoginition API key to .env file](#3-add-api-key)
-4. [Install dependencies and run server](#4-install-dependencies-and-run)
-5. [Update config values for the Mobile App](#3-update-config-values-for-the-mobile-app)
-6. [Install dependencies to build the mobile application](#4-install-dependencies-to-build-the-mobile-application)
-7. [Add Android platform and plug-ins](#5-add-android-platform-and-plug-ins)
-8. [Setup your Android device](#6-setup-your-android-device)
-9. [Build and run the mobile app](#7-build-and-run-the-mobile-app)
+2. [Create the Watson Visual Recognition service](#2-create-the-following-service-and-name-it-wvda-visual-recognition)
+3. [Add Visual Recoginition API key to .env file](#3-add-visual-recoginition-api-key-to-env-file)
+4. [Install dependencies and run server](#4-install-dependencies-and-run-server)
+5. [Update config values for the Mobile App](#5-update-config-values-for-the-mobile-app)
+6. [Install dependencies to build the mobile application](#6-install-dependencies-to-build-the-mobile-application)
+7. [Add Android platform and plug-ins](#7-add-android-platform-and-plug-ins)
+8. [Setup your Android device](#8-setup-your-android-device)
+9. [Build and run the mobile app](#9-build-and-run-the-mobile-app)
 
 ## 1. Clone the repo
 
