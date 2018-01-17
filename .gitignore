@@ -1,4 +1,11 @@
 # Mac OS
 .DS_Store
 mobile/node_modules
+mobile/platforms/android/
+mobile/plugins/android.json
+mobile/plugins/cordova-plugin-camera/
+mobile/plugins/cordova-plugin-file-transfer/
+mobile/plugins/cordova-plugin-file/
 server/node_modules
+server/.env
+
