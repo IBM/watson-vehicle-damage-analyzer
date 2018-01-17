@@ -64,7 +64,12 @@ To see the app and services created and configured for this code pattern, use th
 3. [Add Visual Recoginition API key to .env file](#3-add-visual-recoginition-api-key-to-env-file)
 4. [Install dependencies and run server](#4-install-dependencies-and-run-server)
 5. [Update config values for the Mobile App](#5-update-config-values-for-the-mobile-app)
-6. [Install dependencies to build the mobile application](#6-install-dependencies-to-build-the-mobile-application)
+6. Perform either 6a or 6b.
+
+    6a. [Install dependencies to build the mobile application](#6a-install-dependencies-to-build-the-mobile-application)
+
+    6b. [Run mobile application build in Docker container](#6b-run-mobile-application-build-in-docker-container)
+
 7. [Add Android platform and plug-ins](#7-add-android-platform-and-plug-ins)
 8. [Setup your Android device](#8-setup-your-android-device)
 9. [Build and run the mobile app](#9-build-and-run-the-mobile-app)
@@ -114,9 +119,10 @@ Edit `mobile/www/config.json` and update the setting with the values retrieved p
 "SERVER_URL": "put_server_url_here"
 ```
 
-## 6. Install dependencies to build the mobile application
+## 6a. Install dependencies to build the mobile application
 
 Building the mobile application requires a few dependencies that you need to manually install yourself.
+If you are running [Docker](https://docs.docker.com/engine/installation/) you can build the mobile app in a container by skipping to [Run mobile application build in Docker container](#7-run-mobile-application-build-in-Docker-container)
 
 ### Using manually-installed dependencies
 
@@ -128,13 +134,18 @@ For this code pattern, you'll need to install the prerequisites, by following th
 * [Cordova](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)
 * [Gradle](https://gradle.org/install/)
 
-You'll need to install the specific SDK appropriate for your mobile device. From `Android Studio`, download and install the desired API Level for the SDK. To do this:
+You'll need to install the specific SDK appropriate for your mobile device. From `Android Studio`, download and install the desired API Level for the SDK. We are using Android API Level 23 as this is widely supported on most phones as of January, 2018. To do this:
 
 * Launch `Android Studio` and accept all defaults.
 * Click on the `SDK Manager` icon in the toolbar.
 * Navigate to `Appearance & Behavior` -> `System Settings` -> `Android SDK`
 * Select Android 6.0 (Marshmallow) (API Level 23).
 * Click apply to download and install.
+
+> Note: the mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+```
+<preference name="android-targetSdkVersion" value="23" />
+```
 
 Once you have completed all of the required installs and setup, you will need the following environment variables set appropriately for your platform:
 
@@ -159,6 +170,31 @@ get the exact path for JAVA_HOME:
 For our example, we then add these to $PATH. (your locations may vary)
 ```
 $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
+```
+
+## 6b. Run mobile application build in Docker container
+
+If you are running [Docker](https://docs.docker.com/engine/installation/), build the mobile app in a Docker container.
+
+Either download the image:
+```
+docker pull scottdangelo/cordova_build
+```
+
+Or build locally:
+```
+docker build -t cordova_build .
+```
+
+Now create the following alias for `cordova` and the commands for cordova will run inside the container. Use `cordova_build` in place of `scottdangelo/cordova_build` if you have built the container locally.
+
+```
+alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo:cordova_build cordova'
+```
+
+> Note: the mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+```
+<preference name="android-targetSdkVersion" value="23" />
 ```
 
 ## 7. Add Android platform and plug-ins

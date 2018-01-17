@@ -29,7 +29,7 @@ ENV PATH ${PATH}:/opt/android/tools/bin
 RUN sdkmanager --update \
     && yes | sdkmanager \
     "build-tools;26.0.1" \
-    "platforms;android-25"
+    "platforms;android-26"
 
 # Install Cordova, and opt out of telemetry reporting. If we don't opt-out now,
 # then the user will face an interactive prompt when building the image later.
@@ -37,10 +37,3 @@ RUN npm install -g cordova \
     && cordova telemetry off
 
 WORKDIR /mobile
-# This can be overridden by the user, but assumes that the repo's mobile/
-# directory is volume-mounted to /mobile in the container, using `docker run -v
-# mobile:/mobile`, for example.
-CMD \
-    cordova platform add android || true ; \
-    cordova requirements ; \
-    cordova build android
