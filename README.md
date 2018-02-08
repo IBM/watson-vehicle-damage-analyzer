@@ -254,6 +254,8 @@ At this point, the app named `Watson Vehicle Damage Analyzer` should be on your 
 
 # Troubleshooting
 
+* Test the Visual Recognition service using the instructions in [test/README.md](test/README.md)
+
 * `cordova run android` error: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE]
 
 > The `Vehicle Damage Analyzer` app is already installed on your phone and incompatible with the version you are now trying to run. Uninstall the current version and try again.
