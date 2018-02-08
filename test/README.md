@@ -3,6 +3,34 @@
 Run unit and funtional tests with:
 `npm test`
 
+## Manual Tests
+
+Test your server and Visual Recognition classification by exectuting
+the following in a shell:
+
+### get your API key from the Visual Recognition service credentials
+```
+export API_KEY=<your_api_key>
+```
+
+### List your classifiers
+```
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20"
+```
+
+### set ENV variable for your classifier
+```
+export CLASSIFIER=<your_classifer>
+```
+
+### Classify image with your custom classifier
+#### export IMAGE_FILE for each image file in test/data/ dir
+```
+export IMAGE_FILE=brokenWindowTest.jpg
+
+curl -X POST -F "images_file=@data/$IMAGE_FILE" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=$API_KEY&classifier_ids=$CLASSIFIER&version=2016-05-20"
+```
+
 ## Travis CI
 
 Note that running the functional tests in TravisCI require
