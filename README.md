@@ -111,6 +111,17 @@ $ npm install
 $ npm start
 ```
 
+#### Test the application from a browser
+
+If you are unable to, or do not want to build the mobile app, you can point a browser to the server and test the application.
+
+* For a server running locally, Open a browser tab to `localhost:<port>`.
+* For a server running on IBM Cloud, Open a browser tab and point it to the URL for your server `<IBM_Cloud_server_URL:port>`
+
+The default port is `3000`
+
+You can then upload a local picture, i.e one from this repository in `test/data/`
+
 ## 5. Update config values for the Mobile App
 
 Edit `mobile/www/config.json` and update the setting with the values retrieved previously.
