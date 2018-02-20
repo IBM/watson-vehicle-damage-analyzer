@@ -4,7 +4,7 @@
 # Create a custom Visual Recognition classifier for analyzing vehicle damage
 
 In this developer code pattern, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
-The server application will use pictures of auto accidents and other incidents to train Watson Visual Recognition to identify various classes of issues, i.e. vandalism, broken windshield, motorcycle accidnet, or flat tire. A developer can leverage this to create their own custom Visual Recognition classifiers for their use cases.
+The server application will use pictures of auto accidents and other incidents to train Watson Visual Recognition to identify various classes of issues, i.e. vandalism, broken windshield, motorcycle accident, or flat tire. A developer can leverage this to create their own custom Visual Recognition classifiers for their use cases.
 
 Currently this mobile app only runs on Android, but can be easily ported to iOS.
 
