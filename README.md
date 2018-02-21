@@ -200,7 +200,7 @@ docker build -t cordova_build .
 Now create the following alias for `cordova` and the commands for cordova will run inside the container. Use `cordova_build` in place of `scottdangelo/cordova_build` if you have built the container locally.
 
 ```
-alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo:cordova_build cordova'
+alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo/cordova_build cordova'
 ```
 
 > Note: the mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
