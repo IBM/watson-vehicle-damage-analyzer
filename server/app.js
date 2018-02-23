@@ -106,4 +106,4 @@ const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 application.listen(port, function () {
     console.log("Server running on port: %d", port);
 });
-require("cf-deployment-tracker-client").track();
+require('metrics-tracker-client').track();
