@@ -91,7 +91,7 @@ $ cd watson-vehicle-damage-analyzer
 When you create the Visual Recognition service, you will need the API key
 ![](doc/source/images/apiKey.png)
 
-Move the watson-vehicle-damage-analyzer/server/env.example file to ``/.env`` and populate the API key:
+Rename the watson-vehicle-damage-analyzer/server/env.example file to ``watson-vehicle-damage-analyzer/server/.env`` and populate the API key:
 
 ```
 # Watson Visual Recognition
