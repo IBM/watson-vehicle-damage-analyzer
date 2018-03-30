@@ -8,4 +8,6 @@ mobile/plugins/cordova-plugin-file-transfer/
 mobile/plugins/cordova-plugin-file/
 server/node_modules
 server/.env
-
+mobile/platforms/ios/
+mobile/plugins/ios.json
+mobile/plugins/cordova-plugin-ios-camera-permissions

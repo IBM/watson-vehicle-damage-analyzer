@@ -70,9 +70,21 @@ To see the app and services created and configured for this code pattern, use th
 
     6b. [Run mobile application build in Docker container](#6b-run-mobile-application-build-in-docker-container)
 
-7. [Add Android platform and plug-ins](#7-add-android-platform-and-plug-ins)
-8. [Setup your Android device](#8-setup-your-android-device)
-9. [Build and run the mobile app](#9-build-and-run-the-mobile-app)
+7. Deploy to Android using Cordova
+
+   7a.[Add Android platform and plug-ins](#7a-add-android-platform-and-plug-ins)
+   
+   7b. [Setup your Android device](#7b-setup-your-android-device)
+   
+   7c. [Build and run the mobile app](#7c-build-and-run-the-mobile-app)
+   
+8. Deploy to iOS using Cordova
+
+   8a. [Add iOS platform and plugins](#8a-add-ios-platform-and-plugins)
+   
+   8b. [Setup your iOS project](#8b-setup-your-ios-project)
+   
+   8c. [Deploy the app to iOS device or emulator](#8c-deploy-the-app-to-ios-device-or-emulator)
 
 ## 1. Clone the repo
 
@@ -208,7 +220,7 @@ alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo/co
 <preference name="android-targetSdkVersion" value="23" />
 ```
 
-## 7. Add Android platform and plug-ins
+## 7a. Add Android platform and plug-ins
 
 Adjust the path for `watson-vehicle-damage-analyzer/mobile` based on your present working directory.
 
@@ -232,7 +244,7 @@ $ cordova plugin add cordova-plugin-camera
 $ cordova plugin add cordova-plugin-file-transfer
 ```
 
-## 8. Setup your Android device
+## 7b. Setup your Android device
 
 In order to run the application on your Android device, you will need to be prepared to transfer the application's `.apk` file to your device (created in the next step). There are multiple ways for developers to achieve this.
 
@@ -242,7 +254,7 @@ Android Studio will handle the transfer for you if you tether your Android devic
 
 For Mac users, [Android File Transfer](https://www.android.com/filetransfer/) will facilitate simple file transfers between your computer and Android device.
 
-## 9. Build and run the mobile app
+## 7c. Build and run the mobile app
 
 ```
 $ cd watson-vehicle-damage-analyzer/mobile
@@ -258,6 +270,38 @@ $ cordova run android
 ```
 
 At this point, the app named `Watson Vehicle Damage Analyzer` should be on your mobile device. Use the camera icon to take a photo of an automobile windshield, tire, vandalism, or of a motorcycle. The mobile application will send the image to the server after you click on the `check mark`, and the server will use Watson to analyze the image and fetch the results.
+
+## 8a. Add iOS platform and plugins
+
+Install the iOS deployment tools
+
+```
+    $ npm install -g ios-sim
+    $ npm install -g ios-deploy
+```
+
+Add the iOS platform and build. This will create an iOS folder in `platform` directory with all necessary files to run in emulator or iOS device
+
+```
+    $ cordova platform add ios
+    $ cordova prepare              # or "cordova build"
+```
+All cordova plugins are configured in [mobile/config.xml](mobile/config.xml) and will be installed when you create the platform and build.
+
+## 8b. Setup your iOS project
+
+In order to run the iOS project that was created from step #8a, we need to first create the `provisioning file,app IDs and certificates` from `Xcode`. You need to have an apple login which is free if you have an iOS device. Go to `Xcode>Preferences>Accounts` and add your apple login. This will create a `Personal Team` profile which can be used to sign your project.
+
+If you get `error: exportArchive: No profiles for ‘com.watson.vehicledamageanalyzer’ were found`. You need to select project in Xcode  and change the `bundle identifier` to a unique one. Also change the widget `id` in [mobile/config.xml](mobile/config.xml) to the same one in Xcode
+
+for example: change `com.watson.vehicle-damage-analyzer` to your new bundle identifier name `com.foo.vehicle-damage-analyzer`
+
+## 8c. Deploy the app to iOS device
+Deploy the app using the following. NOTE: make sure you device in unlocked when deploying.
+
+To deploy the app on a connected iOS device:
+
+    `$ cordova run ios --device`    
 
 # Sample Output
 
