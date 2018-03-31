@@ -103,7 +103,7 @@ $ cd watson-vehicle-damage-analyzer
 When you create the Visual Recognition service, you will need the API key
 ![](doc/source/images/apiKey.png)
 
-Rename the watson-vehicle-damage-analyzer/server/env.example file to ``watson-vehicle-damage-analyzer/server/.env`` and populate the API key:
+Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and populate the API key:
 
 ```
 # Watson Visual Recognition
@@ -127,8 +127,8 @@ $ npm start
 
 If you are unable to, or do not want to build the mobile app, you can point a browser to the server and test the application.
 
-* For a server running locally, Open a browser tab to `localhost:<port>`.
-* For a server running on IBM Cloud, Open a browser tab and point it to the URL for your server `<IBM_Cloud_server_URL:port>`
+* For a server running locally, open a browser tab to `localhost:<port>`.
+* For a server running on IBM Cloud, open a browser tab and point it to the URL for your server `<IBM_Cloud_server_URL:port>`
 
 The default port is `3000`
 
@@ -165,7 +165,7 @@ You'll need to install the specific SDK appropriate for your mobile device. From
 * Select Android 6.0 (Marshmallow) (API Level 23).
 * Click apply to download and install.
 
-> Note: the mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+> Note: the ``mobile/config.xml`` is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
 ```
 <preference name="android-targetSdkVersion" value="23" />
 ```
@@ -179,7 +179,7 @@ Once you have completed all of the required installs and setup, you will need th
 #### How to determine proper values for environment variables:
 
 Open `Android Studio` and navigate to `File` -> `Project Structure` -> `SDK
-Location`. This location value will serve as the base for your environement variables. For example, if the location is `/users/joe/Android/sdk`, then:
+Location`. This location value will serve as the base for your environment variables. For example, if the location is `/users/joe/Android/sdk`, then:
 
 ```
 $ export ANDROID_HOME=/users/joe/Android/sdk
@@ -187,10 +187,10 @@ $ export ANDROID_SDK_HOME=/users/joe/Android/sdk/platforms/android-<api-level>
 $ export JAVA_HOME=`/usr/libexec/java_home`
 ```
 
-get the exact path for JAVA_HOME:
-/usr/libexec/java_home
+get the exact path for ``JAVA_HOME:``
+``/usr/libexec/java_home``
 
-For our example, we then add these to $PATH. (your locations may vary)
+For our example, we then add these to ``$PATH``. (your locations may vary)
 ```
 $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 ```
@@ -215,7 +215,7 @@ Now create the following alias for `cordova` and the commands for cordova will r
 alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo/cordova_build cordova'
 ```
 
-> Note: the mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+> Note: the ``mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
 ```
 <preference name="android-targetSdkVersion" value="23" />
 ```
@@ -321,7 +321,7 @@ To deploy the app on a connected iOS device:
 
 * Error: Server error, status code: 502, error code: 10001, message: Service broker error: {"description"=>"Only one free key is allowed per organization. Contact your organization owner to obtain the key."}
 
-> Only one free key is allowed per organization. Binding the service to an application triggers a process that tries to allocate a new key,which will get rejected. If you already have an instance of Visual Recognition and an associated key, you can bind that instance to your application or update the API key in your server code to tell the app which key to use.
+> Only one free key is allowed per organization. Binding the service to an application triggers a process that tries to allocate a new key, which will get rejected. If you already have an instance of Visual Recognition and an associated key, you can bind that instance to your application or update the API key in your server code to tell the app which key to use.
 
 * Deploy or Dashboard shows app is not running
 
@@ -350,7 +350,7 @@ Finished: FAILED
 
 ![App not running](doc/source/images/app-not-running.png)
 
-> Both of these can be spurious errors. Click the `Visit App URL` link in the IBM Cloud console, or try `Runtime -> SSH`, or simply test the app to see if it is running.
+> Both of these can be spurious errors. Click the `Visit App URL` link in the IBM Cloud console, or try `Runtime` -> `SSH`, or simply test the app to see if it is running.
 
 # Privacy Notice
 
@@ -368,7 +368,7 @@ If using the Deploy to IBM Cloud button some metrics are tracked, the following 
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-This data is collected from the `package.json` and `repository.yaml` files in the sample application and the ``VCAP_APPLICATION`` and ``VCAP_SERVICES`` environment variables in IBM Cloud and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM IBM Cloud to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Metrics Tracker service will be tracked.
+This data is collected from the `package.json` and `repository.yaml` files in the sample application and the ``VCAP_APPLICATION`` and ``VCAP_SERVICES`` environment variables in IBM Cloud and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Cloud to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Metrics Tracker service will be tracked.
 
 ## Disabling Deployment Tracking
 
