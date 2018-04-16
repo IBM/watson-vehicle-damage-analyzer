@@ -73,17 +73,17 @@ To see the app and services created and configured for this code pattern, use th
 7. Deploy to Android using Cordova
 
    7a.[Add Android platform and plug-ins](#7a-add-android-platform-and-plug-ins)
-   
+
    7b. [Setup your Android device](#7b-setup-your-android-device)
-   
+
    7c. [Build and run the mobile app](#7c-build-and-run-the-mobile-app)
-   
+
 8. Deploy to iOS using Cordova
 
    8a. [Add iOS platform and plugins](#8a-add-ios-platform-and-plugins)
-   
+
    8b. [Setup your iOS project](#8b-setup-your-ios-project)
-   
+
    8c. [Deploy the app to iOS device or emulator](#8c-deploy-the-app-to-ios-device-or-emulator)
 
 ## 1. Clone the repo
@@ -96,11 +96,19 @@ $ cd watson-vehicle-damage-analyzer
 ```
 ## 2. Create the following service and name it `wvda-visual-recognition`:
 
-  * [**Watson Visual Recognition**](https://console-regional.ng.bluemix.net/catalog/services/visual-recognition)
+  * Use either [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com/data/discovery/watson_vision_combined/details?target=watson&context=analytics)
+    or [**Watson Visual Recognition on Bluemix**](https://console-regional.ng.bluemix.net/catalog/services/visual-recognition)
+You can choose either the free `Lite` plan or the `Standard` plan.
 
 ## 3. Add Visual Recoginition API key to .env file
 
 When you create the Visual Recognition service, you will need the API key
+In Watson Studio it will look like this:
+
+![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/VizRecCreds.png)
+
+In Bluemix it will look like this:
+
 ![](doc/source/images/apiKey.png)
 
 Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and populate the API key:
@@ -301,7 +309,7 @@ Deploy the app using the following. NOTE: make sure you device in unlocked when 
 
 To deploy the app on a connected iOS device:
 
-    `$ cordova run ios --device`    
+    `$ cordova run ios --device`
 
 # Sample Output
 
