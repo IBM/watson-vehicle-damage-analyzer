@@ -318,7 +318,7 @@ for example: change `com.watson.vehicle-damage-analyzer` to your new bundle iden
 
 ## 8c. Deploy the app to iOS device
 
-Deploy the app using the following speps, make sure your device in unlocked when deploying.
+Deploy the app using the following steps, make sure your device in unlocked when deploying.
 
 To deploy the app on a connected iOS device:
 
