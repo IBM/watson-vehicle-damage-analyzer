@@ -109,7 +109,13 @@ OR
 
 Traditionally [IBM Cloud](https://console.bluemix.net) was the main platform for application developers, while [IBM Watson Studio](https://dataplatform.ibm.com/) (formally Data Science Experience) was targetted towards Data Scientists. In early 2018, a new offering, [Watson Studio was introduced](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47). Watson Studio provides a suite of tools for data scientists and application developers, allowing them to collaboratively connect to data, wrangle that data and use it to build, train and deploy models at scale.
 
-Watson Studio closes the gap with a unified experience to create new insights from knowledge contained in the data. Watson Studio enables multidisciplinary teams across the organization to collaborate. We are convinced, after working with clients around the world, that rich collaboration is key unlocking the full potential of AI.
+To help you decide which platform to use, try answering the following questions:
+
+* Am I using multiple data sets? Use Watson Studio
+* Am I creating a custom classifier for Watson Visual Recognition? Use Watson Studio
+* Am I using a built-in classifier of Watson Visual Recognition? Use IBM Cloud
+
+Sufficiently confused? Don't worry. Any resource that you create in IBM Cloud or Watson Studio will be available in the other.
 
 ## 3. Add Visual Recoginition API key to .env file
 
