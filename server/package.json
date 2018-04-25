@@ -24,7 +24,6 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.x",
     "formidable": "*",
-    "metrics-tracker-client": "*",
     "vcap_services": "^0.2.0",
     "watson-developer-cloud": "^2.0.3"
   },
