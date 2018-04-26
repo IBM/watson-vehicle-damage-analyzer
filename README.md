@@ -3,9 +3,8 @@
 # Create a custom Visual Recognition classifier for analyzing vehicle damage
 
 In this developer code pattern, we will create a mobile app using Apache Cordova, Node.js and Watson Visual Recognition. This mobile app sends pictures of auto and motorcycle accidents and issues to be analyzed by a server app, using Watson Visual Recognition.
-The server application will use pictures of auto accidents and other incidents to train Watson Visual Recognition to identify various classes of issues, i.e. vandalism, broken windshield, motorcycle accident, or flat tire. A developer can leverage this to create their own custom Visual Recognition classifiers for their use cases.
 
-Currently this mobile app only runs on Android, but can be easily ported to iOS.
+The server application will use pictures of auto accidents and other incidents to train Watson Visual Recognition to identify various classes of issues, i.e. vandalism, broken windshield, motorcycle accident, or flat tire. A developer can leverage this to create their own custom Visual Recognition classifiers for their use cases.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -25,7 +24,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Included components
 
-* [Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html): Visual Recognition understands the contents of images - visual concepts tag the image, find human faces, approximate age and gender, and find similar images in a collection.
+* [Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html): Visual Recognition understands the contents of images - tag images, find human faces, approximate age and gender, and find similar images in a collection.
 
 ## Featured Technologies
 
@@ -40,26 +39,27 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
 
-## Deploy the Server Application to IBM Cloud
+## Deploy the server application to IBM Cloud
 
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy`` and then jump to step #5.
+Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy`` and then jump to step #5.
 
-If you are interested in the deploy to of the application, in Toolchains, click on Delivery Pipeline to watch while the app is deployed.
+To monitor the deployment, in Toolchains click on `Delivery Pipeline`  and view the logs while the apps is being deployed.
 
 ![Toolchain pipeline](doc/source/images/toolchain-pipeline.png)
 
 To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-vehicle-damage-analyzer` with a unique suffix. The following services are created and easily identified by the `wvda-` prefix:
     * wvda-visual-recognition
 
-> Note: Make note of the `watson-vehicle-damage-analyzer` URL route - it will be required for later use in the mobile app.
+> Make note of the `watson-vehicle-damage-analyzer` URL route - it will be required for later use in the mobile app.
 
-## Deploy the Server Application locally
- Perform steps 1-9:
+## Deploy the server application locally
+
+Perform steps 1-9:
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create the Watson Visual Recognition service](#2-create-the-following-service-and-name-it-wvda-visual-recognition)
+2. [Create the Watson Visual Recognition service](#2-create-the-watson-visual-recognition-service)
 3. [Add Visual Recoginition API key to .env file](#3-add-visual-recoginition-api-key-to-env-file)
 4. [Install dependencies and run server](#4-install-dependencies-and-run-server)
 5. [Update config values for the Mobile App](#5-update-config-values-for-the-mobile-app)
@@ -93,24 +93,42 @@ Clone the `watson-vehicle-damage-analyzer` repo locally. In a terminal, run:
 $ git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git
 $ cd watson-vehicle-damage-analyzer
 ```
-## 2. Create the following service and name it `wvda-visual-recognition`:
 
-  * Use either [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com/data/discovery/watson_vision_combined/details?target=watson&context=analytics)
-    or [**Watson Visual Recognition on Bluemix**](https://console-regional.ng.bluemix.net/catalog/services/visual-recognition)
-You can choose either the free `Lite` plan or the `Standard` plan.
+## 2. Create the Watson Visual Recognition service
+
+Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a free `Lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`.
+
+* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com/data/discovery/watson_vision_combined/details?target=watson&context=analytics)
+
+OR
+
+* [**Watson Visual Recognition on IBM Cloud**](https://console.bluemix.net/catalog/services/visual-recognition)
+
+### Why the two choices?
+
+Traditionally [IBM Cloud](https://console.bluemix.net) was the main platform for application developers, while [IBM Watson Studio](https://dataplatform.ibm.com/) (formally Data Science Experience) was targetted towards Data Scientists. In early 2018, a new offering, [Watson Studio was introduced](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47). Watson Studio provides a suite of tools for data scientists and application developers, allowing them to collaboratively connect to data, wrangle that data and use it to build, train and deploy models at scale.
+
+To help you decide which platform to use, try answering the following questions:
+
+* Am I using multiple data sets? Use Watson Studio
+* Am I creating a custom classifier for Watson Visual Recognition? Use Watson Studio
+* Am I using a built-in classifier of Watson Visual Recognition? Use IBM Cloud
+
+Sufficiently confused? Don't worry. Any resource that you create in IBM Cloud or Watson Studio will be available in the other.
 
 ## 3. Add Visual Recoginition API key to .env file
 
-When you create the Visual Recognition service, you will need the API key
-In Watson Studio it will look like this:
+To use the Visual Recognition service you will need the API key.
+
+To retrieve the key in Watson Studio go to the following tab:
 
 ![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/VizRecCreds.png)
 
-In Bluemix it will look like this:
+In IBM Cloud it will look like this:
 
 ![](doc/source/images/apiKey.png)
 
-Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and populate the API key:
+Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and add the API key:
 
 ```
 # Watson Visual Recognition
@@ -172,7 +190,7 @@ You'll need to install the specific SDK appropriate for your mobile device. From
 * Select Android 6.0 (Marshmallow) (API Level 23).
 * Click apply to download and install.
 
-> Note: the ``mobile/config.xml`` is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+> The ``mobile/config.xml`` is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
 ```
 <preference name="android-targetSdkVersion" value="23" />
 ```
@@ -222,7 +240,7 @@ Now create the following alias for `cordova` and the commands for cordova will r
 alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo/cordova_build cordova'
 ```
 
-> Note: the ``mobile/config.xml is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
+> The ``mobile/config.xml`` file is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
 ```
 <preference name="android-targetSdkVersion" value="23" />
 ```
@@ -257,7 +275,7 @@ In order to run the application on your Android device, you will need to be prep
 
 Android Studio will handle the transfer for you if you tether your Android device to your computer, and enable both `developer options` and `web debugging`.
 
-> Note: Please refer to documentation on your specific phone to set these options.
+> Please refer to documentation on your specific phone to set these options.
 
 For Mac users, [Android File Transfer](https://www.android.com/filetransfer/) will facilitate simple file transfers between your computer and Android device.
 
@@ -304,7 +322,8 @@ If you get `error: exportArchive: No profiles for ‘com.watson.vehicledamageana
 for example: change `com.watson.vehicle-damage-analyzer` to your new bundle identifier name `com.foo.vehicle-damage-analyzer`
 
 ## 8c. Deploy the app to iOS device
-Deploy the app using the following. NOTE: make sure you device in unlocked when deploying.
+
+Deploy the app using the following steps, make sure your device in unlocked when deploying.
 
 To deploy the app on a connected iOS device:
 
