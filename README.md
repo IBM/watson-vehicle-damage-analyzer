@@ -62,12 +62,13 @@ Perform steps 1-9:
 2. [Create the Watson Visual Recognition service](#2-create-the-watson-visual-recognition-service)
 3. [Add Visual Recoginition API key to .env file](#3-add-visual-recoginition-api-key-to-env-file)
 4. [Install dependencies and run server](#4-install-dependencies-and-run-server)
-5. [Update config values for the Mobile App](#5-update-config-values-for-the-mobile-app)
+5. [Update config values for the Mobile App and install Build dependencies](#5-update-config-values-for-the-mobile-app-and-install-build-dependencies)
+
 6. Perform either 6a or 6b.
 
-    6a. [Install dependencies to build the mobile application](#6a-install-dependencies-to-build-the-mobile-application)
+    6a. [Install dependencies to build the mobile application for Android](#6a-install-dependencies-to-build-the-mobile-application-for-android)
 
-    6b. [Run mobile application build in Docker container](#6b-run-mobile-application-build-in-docker-container)
+    6b. [Run mobile application build in Docker container for Android](#6b-run-mobile-application-build-in-docker-container-for-android)
 
 7. Deploy to Android using Cordova
 
@@ -143,6 +144,10 @@ If you used ``Deploy to IBM Cloud``, the setup is automatic.
 
 #### If you decided to run the app locally...
 
+* Install [Node.js and npm](https://nodejs.org/en/download/) (`npm` version 4.5.0 or higher)
+
+* Install the app dependencies and start the app:
+
 ```
 $ npm install
 $ npm start
@@ -159,7 +164,7 @@ The default port is `3000`
 
 You can then upload a local picture, i.e one from this repository in `test/data/`
 
-## 5. Update config values for the Mobile App
+## 5. Update config values for the Mobile App and install Build dependencies
 
 Edit `mobile/www/config.json` and update the setting with the values retrieved previously.
 
@@ -167,20 +172,22 @@ Edit `mobile/www/config.json` and update the setting with the values retrieved p
 "SERVER_URL": "put_server_url_here"
 ```
 
-## 6a. Install dependencies to build the mobile application
+For this code pattern, you'll need to install the prerequisites, by following their respective documentation:
+
+* [Cordova](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)
+* [Gradle](https://gradle.org/install/)
+
+## 6a. Install dependencies to build the mobile application for Android
 
 Building the mobile application requires a few dependencies that you need to manually install yourself.
-If you are running [Docker](https://docs.docker.com/engine/installation/) you can build the mobile app in a container by skipping to [Run mobile application build in Docker container](#7-run-mobile-application-build-in-Docker-container)
+If you are running [Docker](https://docs.docker.com/engine/installation/) you can build the mobile app in a container by skipping to [Run mobile application build in Docker container for Android](#6b-run-mobile-application-build-in-docker-container-for-android)
 
 ### Using manually-installed dependencies
 
-For this code pattern, you'll need to install the prerequisites, by following their respective documentation:
+For manually building an Android app, you'll need to install these prerequisites, by following their respective documentation:
 
 * [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Node.js and npm](https://nodejs.org/en/download/) (`npm` version 4.5.0 or higher)
 * [Android Studio](https://developer.android.com/studio/), which includes Android tools and gives you access to Android SDKs
-* [Cordova](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)
-* [Gradle](https://gradle.org/install/)
 
 You'll need to install the specific SDK appropriate for your mobile device. From `Android Studio`, download and install the desired API Level for the SDK. We are using Android API Level 23 as this is widely supported on most phones as of January, 2018. To do this:
 
@@ -220,7 +227,7 @@ For our example, we then add these to ``$PATH``. (your locations may vary)
 $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 ```
 
-## 6b. Run mobile application build in Docker container
+## 6b. Run mobile application build in Docker container for Android
 
 If you are running [Docker](https://docs.docker.com/engine/installation/), build the mobile app in a Docker container.
 
@@ -260,6 +267,21 @@ Ensure that everything has been installed correctly:
 
 ```
 $ cordova requirements
+```
+
+You should see requirements installed for whichever appliction you are building for, `ios` or `android`. So for android, I see:
+
+```
+Requirements check results for android:
+Java JDK: installed 1.8.0
+Android SDK: installed true
+Android target: installed android-26
+Gradle: installed /usr/share/gradle/bin/gradle
+
+Requirements check results for ios:
+Apple macOS: not installed
+Cordova tooling for iOS requires Apple macOS
+(node:1) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): Some of requirements check failed
 ```
 
 Finally, install the plugins required by the application:
@@ -321,7 +343,7 @@ If you get `error: exportArchive: No profiles for ‘com.watson.vehicledamageana
 
 for example: change `com.watson.vehicle-damage-analyzer` to your new bundle identifier name `com.foo.vehicle-damage-analyzer`
 
-## 8c. Deploy the app to iOS device
+## 8c. Deploy the app to iOS device or emulator
 
 Deploy the app using the following steps, make sure your device in unlocked when deploying.
 
