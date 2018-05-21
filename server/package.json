@@ -4,26 +4,26 @@
   "version": "0.1.1",
   "main": "app.js",
   "scripts": {
-      "start": "node app.js",
-      "test-integration": "casperjs test ../test/integration/test.*.js",
-      "test-integration-runner": "NODE_ENV=test node casper-runner.js",
-      "test": "npm run test-integration-runner",
-      "test-unit": "istanbul cover ./node_modules/mocha/bin/_mocha test/unit",
-      "lint": "eslint .",
-      "autofix": "eslint --fix .",
-      "codecov": "npm run test && (codecov || true)"
+    "start": "node app.js",
+    "test-integration": "casperjs test ../test/integration/test.*.js",
+    "test-integration-runner": "NODE_ENV=test node casper-runner.js",
+    "test": "npm run test-integration-runner",
+    "test-unit": "istanbul cover ./node_modules/mocha/bin/_mocha test/unit",
+    "lint": "eslint .",
+    "autofix": "eslint --fix .",
+    "codecov": "npm run test && (codecov || true)"
   },
- "license": "Apache-2.0",
- "repository": {
+  "license": "Apache-2.0",
+  "repository": {
     "type": "git",
     "url": "https://github.com/IBM/watson-vehicle-damage-analyzer.git"
   },
   "dependencies": {
-    "body-parser": "^1.17.x",
-    "cfenv": "^1.0.x",
+    "body-parser": "^1.18.3",
+    "cfenv": "^1.1.0",
     "dotenv": "^4.0.0",
-    "express": "^4.15.x",
-    "formidable": "*",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1",
     "vcap_services": "^0.2.0",
     "watson-developer-cloud": "^2.0.3"
   },
@@ -39,7 +39,8 @@
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "phantomjs-prebuilt": "^2.1.13",
-    "prettier": "^1.1.0",
+    "prettier": "^1.12.1",
+    "request": "^2.87.0",
     "supertest": "^1.2.0"
   },
   "engines": {
