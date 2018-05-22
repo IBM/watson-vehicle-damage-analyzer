@@ -111,18 +111,14 @@ window.addEventListener('load', function() {
 
   // image preview
   document.getElementById("foo").addEventListener("change", imagePreview);
-  function imagePreview(event) {
-    console.log(event);
-    let input = event.srcElement;
-    console.log(input.files);
-    console.log(input.files[0]);
+  function imagePreview() {
+    let input = document.querySelector('input[type=file]');
     if (input.files && input.files[0]) {
       let fileReader = new FileReader();
-
-      fileReader.onload = function (e) {
+      fileReader.onload = function () {
         const imagePreview = document.getElementById('imagePreview');
-        imagePreview.src = e.target.result;
-        imagePreview.style = "";
+        imagePreview.src = fileReader.result;
+        imagePreview.style = "display: block;";
       };
 
       fileReader.readAsDataURL(input.files[0]);
