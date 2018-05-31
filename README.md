@@ -1,3 +1,4 @@
+*Read this in other languages: [中国](README-cn.md).*
 [![Build Status](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
 
 # Create a custom Visual Recognition classifier for analyzing vehicle damage
