@@ -24,6 +24,7 @@ require('dotenv').config({
 
 const fs = require("fs");
 const watson = require("watson-developer-cloud");
+const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 const express = require("express");
 const application = express();
 const formidable = require("formidable");
@@ -32,9 +33,8 @@ const credentials = vcapServices.getCredentials("watson_vision_combined");
 const child_process = require("child_process");
 const WatsonVisRecSetup= require('./lib/watson-visRec-setup');
 
-const visual_recognition = watson.visual_recognition({
-    version: "v3",
-    version_date: "2016-05-20"
+const visual_recognition = new VisualRecognitionV3({
+    version: "2018-03-19"
 });
 
 var custom_classifier = null;
