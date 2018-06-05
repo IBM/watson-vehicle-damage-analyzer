@@ -2,7 +2,7 @@
 declared-services:
   wvda-visual-recognition:
     label: watson_vision_combined
-    plan: free
+    plan: lite
 applications:
 - path: ./server
   memory: 256M
