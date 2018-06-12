@@ -15,7 +15,7 @@ export API_KEY=<your_api_key>
 
 ### List your classifiers
 ```
-curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20"
+curl -u "apikey:$API_KEY" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classifiers?verbose=true&version=2018-03-19"
 ```
 
 ### set ENV variable for your classifier
@@ -28,7 +28,7 @@ export CLASSIFIER=<your_classifer>
 ```
 export IMAGE_FILE=brokenWindowTest.jpg
 
-curl -X POST -F "images_file=@data/$IMAGE_FILE" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=$API_KEY&classifier_ids=$CLASSIFIER&version=2016-05-20"
+curl -X POST -u "apikey:$API_KEY" -F "images_file=@data/$IMAGE_FILE"  "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?classifier_ids=$CLASSIFIER&version=2018-03-19"
 ```
 
 ## Travis CI
