@@ -98,9 +98,11 @@ $ cd watson-vehicle-damage-analyzer
 
 ## 2. Create the Watson Visual Recognition service
 
-Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a free `Lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`.
+Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a free `lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`.
 
-* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com/data/discovery/watson_vision_combined/details?target=watson&context=analytics)
+* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com)
+
+Under `Watson services` click `+ Add service` and choose `Visual Recognition`
 
 OR
 
@@ -124,11 +126,11 @@ To use the Visual Recognition service you will need the API key.
 
 To retrieve the key in Watson Studio go to the following tab:
 
-![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/VizRecCreds.png)
+![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/WatsonStuidioVizRecIAMcred.png)
 
 In IBM Cloud it will look like this:
 
-![](doc/source/images/apiKey.png)
+![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/IBMcloudVizRecIAMcred.png)
 
 Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and add the API key:
 
@@ -375,6 +377,7 @@ To deploy the app on a connected iOS device:
 * Deploy or Dashboard shows app is not running
 
 > You may see logs in the Deploy Stage that indicate that the app has crashed and cannot start:
+
 ```
 Starting app watson-vehicle-damage-analyzer-20171206202105670 in org scott.dangelo / space dev as scott.dangelo@ibm.com...
 
