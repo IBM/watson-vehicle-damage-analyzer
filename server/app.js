@@ -23,14 +23,10 @@ require('dotenv').config({
 });
 
 const fs = require("fs");
-const watson = require("watson-developer-cloud");
 const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 const express = require("express");
 const application = express();
 const formidable = require("formidable");
-const vcapServices = require("vcap_services");
-const credentials = vcapServices.getCredentials("watson_vision_combined");
-const child_process = require("child_process");
 const WatsonVisRecSetup= require('./lib/watson-visRec-setup');
 
 const visual_recognition = new VisualRecognitionV3({
@@ -51,7 +47,7 @@ const visRecSetupParams = {
       "status": "ready"
     }
   ]
-}
+};
 
 visRecSetup.setupVisRec(visRecSetupParams, (err, data) => {
   if (err) {
