@@ -18,12 +18,12 @@
 /*jslint es6 */
 "use strict";
 
-require('dotenv').config({
-  silent: true
+require("dotenv").config({
+    silent: true
 });
 
 const fs = require("fs");
-const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
+const VisualRecognitionV3 = require("watson-developer-cloud/visual-recognition/v3");
 const express = require("express");
 const application = express();
 const formidable = require("formidable");
