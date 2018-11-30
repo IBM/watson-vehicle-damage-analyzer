@@ -38,6 +38,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Steps
 
+> NOTE: The Watson Visual Recognition service required for this patten only exists in the US-South/Dallas region (as of 11/30/18). You will only be able to deploy and/or use this code there.
+
 This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
 
 ## Deploy the server application to IBM Cloud
