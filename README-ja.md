@@ -43,7 +43,7 @@
 
 ## サーバー・アプリケーションを IBM Cloud にデプロイする
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
 上の ``Deploy to IBM Cloud`` ボタンをクリックし、次に ``Deploy`` をクリックしたら、[ステップ 5](#5-update-config-values-for-the-mobile-app-and-install-build-dependencies) に進んでください。
 
@@ -111,11 +111,11 @@ IBM Cloud または Watson Studio を使用して Watson Visual Recognition サ�
 
 もしくは
 
-* [**Watson Visual Recognition on IBM Cloud**](https://console.bluemix.net/catalog/services/visual-recognition)
+* [**Watson Visual Recognition on IBM Cloud**](https://cloud.ibm.com/catalog/services/visual-recognition)
 
 ### なぜ2つの選択肢があるのでしょうか？
 
-従来、[IBM Cloud](https://console.bluemix.net) は主にアプリケーション開発者に向けたプラットフォームであり、[IBM Watson Studio](https://dataplatform.ibm.com/) (正式には Data Science Experience) はデータ科学者を対象としてきました。
+従来、[IBM Cloud](https://cloud.ibm.com) は主にアプリケーション開発者に向けたプラットフォームであり、[IBM Watson Studio](https://dataplatform.ibm.com/) (正式には Data Science Experience) はデータ科学者を対象としてきました。
 2018年初めに、新しいサービス [Watson Studio が発表](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47) されました。
 Watson Studioは、データ科学者とアプリケーション開発者向けのツール群を提供し、データに接続し、データを扱い、モデルを構築、訓練、およびデプロイするために共同で使用することができます。
 

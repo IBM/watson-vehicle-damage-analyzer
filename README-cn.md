@@ -38,7 +38,7 @@
 
 ## 将服务器应用程序部署到 IBM Cloud
 
-[![部署到 IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
+[![部署到 IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
 按上面的 ``Deploy to IBM Cloud`` 按钮，单击 ``Deploy``，然后跳到步骤 #5。
 
@@ -100,11 +100,11 @@ $ cd watson-vehicle-damage-analyzer
 
 或者
 
-* [**IBM Cloud 上的 Watson Visual Recognition**](https://console.bluemix.net/catalog/services/visual-recognition)
+* [**IBM Cloud 上的 Watson Visual Recognition**](https://cloud.ibm.com/catalog/services/visual-recognition)
 
 ### 为何提供两个选项？
 
-传统上，[IBM Cloud](https://console.bluemix.net) 是面向应用程序开发者的主平台，而 [IBM Watson Studio](https://dataplatform.ibm.com/)（原名为 Data Science Experience）面向的则是数据科学家。2018 年初，新产品 [Watson Studio 正式推出](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47)。Watson Studio 为数据科学家和应用程序开发者提供了一套工具，让他们能够通过协作连接到数据，充分发掘此数据，并利用它来规模化构建、训练和部署模型。
+传统上，[IBM Cloud](https://cloud.ibm.com) 是面向应用程序开发者的主平台，而 [IBM Watson Studio](https://dataplatform.ibm.com/)（原名为 Data Science Experience）面向的则是数据科学家。2018 年初，新产品 [Watson Studio 正式推出](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47)。Watson Studio 为数据科学家和应用程序开发者提供了一套工具，让他们能够通过协作连接到数据，充分发掘此数据，并利用它来规模化构建、训练和部署模型。
 
 为帮助您确定要使用的平台，请尝试回答以下问题：
 
