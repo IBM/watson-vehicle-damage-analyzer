@@ -25,7 +25,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Included components
 
-* [Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html): Visual Recognition understands the contents of images - tag images, find human faces, approximate age and gender, and find similar images in a collection.
+* [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/): Visual Recognition understands the contents of images - tag images, find human faces, approximate age and gender, and find similar images in a collection.
 
 ## Featured Technologies
 
@@ -38,9 +38,9 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Steps
 
-> NOTE: The Watson Visual Recognition service required for this patten only exists in the US-South/Dallas region (as of 11/30/18). You will only be able to deploy and/or use this code there.
+> NOTE: The Watson Visual Recognition service required for this patten only exists in the US-South/Dallas region (as of 01/07/19). You will only be able to deploy and/or use this code there.
 
-This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
+This code pattern contains several pieces. The app server communicates with the Watson Visual Recognition service. The mobile application is built locally and run on the iPhone or Android phone. You can deploy the server application using the IBM Cloud, or locally on your machine.
 
 ## Deploy the server application to IBM Cloud
 
@@ -93,9 +93,9 @@ Perform steps 1-9:
 
 Clone the `watson-vehicle-damage-analyzer` repo locally. In a terminal, run:
 
-```
-$ git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git
-$ cd watson-vehicle-damage-analyzer
+```bash
+git clone https://github.com/IBM/watson-vehicle-damage-analyzer.git
+cd watson-vehicle-damage-analyzer
 ```
 
 ## 2. Create the Watson Visual Recognition service
@@ -104,29 +104,20 @@ Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a f
 
 * [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com)
 
-Under `Watson services` click `+ Add service` and choose `Visual Recognition`
+Under the top bar `Services` -> `Watson services` click `+ Add service` and choose `Visual Recognition`
 
 OR
 
-* [**Watson Visual Recognition on IBM Cloud**](https://console.bluemix.net/catalog/services/visual-recognition)
-
-### Why the two choices?
-
-Traditionally [IBM Cloud](https://console.bluemix.net) was the main platform for application developers, while [IBM Watson Studio](https://dataplatform.ibm.com/) (formally Data Science Experience) was targetted towards Data Scientists. In early 2018, a new offering, [Watson Studio was introduced](https://medium.com/ibm-watson/introducing-ibm-watson-studio-e93638f0bb47). Watson Studio provides a suite of tools for data scientists and application developers, allowing them to collaboratively connect to data, wrangle that data and use it to build, train and deploy models at scale.
-
-To help you decide which platform to use, try answering the following questions:
-
-* Am I using multiple data sets? Use Watson Studio
-* Am I creating a custom classifier for Watson Visual Recognition? Use Watson Studio
-* Am I using a built-in classifier of Watson Visual Recognition? Use IBM Cloud
-
-Sufficiently confused? Don't worry. Any resource that you create in IBM Cloud or Watson Studio will be available in the other.
+* [**Watson Visual Recognition on IBM Cloud**](https://cloud.ibm.com/catalog/services/visual-recognition)
 
 ## 3. Add Visual Recoginition API key to .env file
 
-To use the Visual Recognition service you will need the API key.
+To use the Visual Recognition service you will need the IAM apikey.
 
-To retrieve the key in Watson Studio go to the following tab:
+To retrieve the key in Watson Studio, scroll down to the list of `Visual Recognition` services,
+find the service you've created and click on the name.
+
+Go to the `Credentials` tab and click `Show credential` for existing creds of `New credential +` if necessary.
 
 ![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/WatsonStuidioVizRecIAMcred.png)
 
@@ -134,11 +125,11 @@ In IBM Cloud it will look like this:
 
 ![](https://github.com/IBM/pattern-images/blob/master/visual-recognition/IBMcloudVizRecIAMcred.png)
 
-Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and add the API key:
+Rename the ``watson-vehicle-damage-analyzer/server/env.example`` file to ``watson-vehicle-damage-analyzer/server/.env`` and add the apikey:
 
-```
+```bash
 # Watson Visual Recognition
-VISUAL_RECOGNITION_API_KEY=<add_api_key>
+VISUAL_RECOGNITION_IAM_APIKEY=<add_apikey>
 ```
 
 ## 4. Install dependencies and run server
@@ -153,9 +144,10 @@ If you used ``Deploy to IBM Cloud``, the setup is automatic.
 
 * Install the app dependencies and start the app:
 
-```
-$ npm install
-$ npm start
+```bashj
+cd server
+npm install
+npm start
 ```
 
 #### Test the application from a browser
@@ -172,9 +164,10 @@ You can then upload a local picture, i.e one from this repository in `test/data/
 ## 5. Update config values for the Mobile App and install Build dependencies
 
 Edit `mobile/www/config.json` and update the setting with the values retrieved previously.
+> NOTE: You will need the full URL to run on a mobile phone, so be sure to include `https://` in the URL.
 
 ```javascript
-"SERVER_URL": "put_server_url_here"
+"SERVER_URL": "https://<put_server_url_here>"
 ```
 
 For this code pattern, you'll need to install the prerequisites, by following their respective documentation:
@@ -203,7 +196,7 @@ You'll need to install the specific SDK appropriate for your mobile device. From
 * Click apply to download and install.
 
 > The ``mobile/config.xml`` is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
-```
+```javascript
 <preference name="android-targetSdkVersion" value="23" />
 ```
 
@@ -218,18 +211,20 @@ Once you have completed all of the required installs and setup, you will need th
 Open `Android Studio` and navigate to `File` -> `Project Structure` -> `SDK
 Location`. This location value will serve as the base for your environment variables. For example, if the location is `/users/joe/Android/sdk`, then:
 
-```
-$ export ANDROID_HOME=/users/joe/Android/sdk
-$ export ANDROID_SDK_HOME=/users/joe/Android/sdk/platforms/android-<api-level>
-$ export JAVA_HOME=`/usr/libexec/java_home`
+```bash
+export ANDROID_HOME=/users/joe/Android/sdk
+export ANDROID_SDK_HOME=/users/joe/Android/sdk/platforms/android-<api-level>
+export JAVA_HOME=`/usr/libexec/java_home`
 ```
 
-get the exact path for ``JAVA_HOME:``
-``/usr/libexec/java_home``
+get the exact path for `JAVA_HOME:`
+```bash
+/usr/libexec/java_home
+```
 
 For our example, we then add these to ``$PATH``. (your locations may vary)
-```
-$ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
+```bash
+export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/sdk/tools:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 ```
 
 ## 6b. Run mobile application build in Docker container for Android
@@ -237,23 +232,23 @@ $ export PATH=${PATH}:/users/joe/Android/sdk/platform-tools:/users/joe/Android/s
 If you are running [Docker](https://docs.docker.com/engine/installation/), build the mobile app in a Docker container.
 
 Either download the image:
-```
+```bash
 docker pull scottdangelo/cordova_build
 ```
 
 Or build locally:
-```
+```bash
 docker build -t cordova_build .
 ```
 
 Now create the following alias for `cordova` and the commands for cordova will run inside the container. Use `cordova_build` in place of `scottdangelo/cordova_build` if you have built the container locally.
 
-```
+```bash
 alias cordova='docker run -it --rm --privileged  -v $PWD:/mobile scottdangelo/cordova_build cordova'
 ```
 
 > The ``mobile/config.xml`` file is configured to build for Android API Level 23. Adjust this if you wish to build for a different API:
-```
+```bash
 <preference name="android-targetSdkVersion" value="23" />
 ```
 
@@ -263,20 +258,20 @@ Adjust the path for `watson-vehicle-damage-analyzer/mobile` based on your presen
 
 Start by adding the Android platform as the target for your mobile app.
 
-```
-$ cd watson-vehicle-damage-analyzer/mobile
-$ cordova platform add android
+```bash
+cd watson-vehicle-damage-analyzer/mobile
+cordova platform add android
 ```
 
 Ensure that everything has been installed correctly:
 
-```
-$ cordova requirements
+```bash
+cordova requirements
 ```
 
 You should see requirements installed for whichever appliction you are building for, `ios` or `android`. So for android, I see:
 
-```
+```bash
 Requirements check results for android:
 Java JDK: installed 1.8.0
 Android SDK: installed true
@@ -291,9 +286,9 @@ Cordova tooling for iOS requires Apple macOS
 
 Finally, install the plugins required by the application:
 
-```
-$ cordova plugin add cordova-plugin-camera
-$ cordova plugin add cordova-plugin-file-transfer
+```bash
+cordova plugin add cordova-plugin-camera
+cordova plugin add cordova-plugin-file-transfer
 ```
 
 ## 7b. Setup your Android device
@@ -308,17 +303,17 @@ For Mac users, [Android File Transfer](https://www.android.com/filetransfer/) wi
 
 ## 7c. Build and run the mobile app
 
-```
-$ cd watson-vehicle-damage-analyzer/mobile
-$ cordova build android
+```bash
+cd watson-vehicle-damage-analyzer/mobile
+cordova build android
 ```
 
-An `.apk` file should appear at `watson-vehicle-damage-analyzer/mobile/platforms/android/build/outputs/apk/android-debug.apk`, which contains the Android application.
+An `.apk` file should appear at `watson-vehicle-damage-analyzer/mobile/platforms/android/app/build/outputs/apk/debug/app-debug.apk` `watson-vehicle-damage-analyzer/mobile/platforms/android/build/outputs/apk/android-debug.apk`, which contains the Android application.
 
 You can then either manually transfer the `.apk` to your device and run it yourself, or if your device is tethered (as described in the previous step), then you can run:
 
-```
-$ cordova run android
+```bash
+cordova run android
 ```
 
 At this point, the app named `Watson Vehicle Damage Analyzer` should be on your mobile device. Use the camera icon to take a photo of an automobile windshield, tire, vandalism, or of a motorcycle. The mobile application will send the image to the server after you click on the `check mark`, and the server will use Watson to analyze the image and fetch the results.
@@ -327,16 +322,16 @@ At this point, the app named `Watson Vehicle Damage Analyzer` should be on your 
 
 Install the iOS deployment tools
 
-```
-    $ npm install -g ios-sim
-    $ npm install -g ios-deploy
+```bash
+npm install -g ios-sim
+npm install -g ios-deploy
 ```
 
 Add the iOS platform and build. This will create an iOS folder in `platform` directory with all necessary files to run in emulator or iOS device
 
-```
-    $ cordova platform add ios
-    $ cordova prepare              # or "cordova build"
+```bash
+cordova platform add ios
+cordova prepare              # or "cordova build"
 ```
 All cordova plugins are configured in [mobile/config.xml](mobile/config.xml) and will be installed when you create the platform and build.
 
@@ -354,7 +349,9 @@ Deploy the app using the following steps, make sure your device in unlocked when
 
 To deploy the app on a connected iOS device:
 
-    `$ cordova run ios --device`
+```bash
+cordova run ios --device
+```
 
 # Sample Output
 
@@ -380,7 +377,7 @@ To deploy the app on a connected iOS device:
 
 > You may see logs in the Deploy Stage that indicate that the app has crashed and cannot start:
 
-```
+```bash
 Starting app watson-vehicle-damage-analyzer-20171206202105670 in org scott.dangelo / space dev as scott.dangelo@ibm.com...
 
 0 of 1 instances running, 1 starting
