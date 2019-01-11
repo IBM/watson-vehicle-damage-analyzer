@@ -1,5 +1,5 @@
 *Read this in other languages: [中国](README-cn.md),[日本](README-ja.md).*
-[![Build Status](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
+[![Build Status](https://api.travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
 
 # Create a custom Visual Recognition classifier for analyzing vehicle damage
 
@@ -44,7 +44,7 @@ This code pattern contains several pieces. The app server communicates with the 
 
 ## Deploy the server application to IBM Cloud
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-vehicle-damage-analyzer)
 
 Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy`` and then jump to step #5.
 
@@ -102,7 +102,7 @@ cd watson-vehicle-damage-analyzer
 
 Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a free `lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`.
 
-* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.ibm.com)
+* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.cloud.ibm.com/)
 
 Under the top bar `Services` -> `Watson services` click `+ Add service` and choose `Visual Recognition`
 
@@ -184,7 +184,7 @@ If you are running [Docker](https://docs.docker.com/engine/installation/) you ca
 
 For manually building an Android app, you'll need to install these prerequisites, by following their respective documentation:
 
-* [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Android Studio](https://developer.android.com/studio/), which includes Android tools and gives you access to Android SDKs
 
 You'll need to install the specific SDK appropriate for your mobile device. From `Android Studio`, download and install the desired API Level for the SDK. We are using Android API Level 23 as this is widely supported on most phones as of January, 2018. To do this:
@@ -409,12 +409,12 @@ Finished: FAILED
 
 # Learn more
 
-* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
+* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/technologies/artificial-intelligence/).
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 
 # License
 
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
