@@ -107,8 +107,7 @@ Create a Watson Visual Recognition service using IBM Cloud, a free `lite` plan a
 
 |   |   |
 | - | - |
-| ![create-vis-rec-service-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/create-vis-rec-service.gif)
- | ![add-images-to-vis-rec-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/add-images-to-vis-rec.gif) |
+| ![create-vis-rec-service-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/create-vis-rec-service.gif) | ![add-images-to-vis-rec-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/add-images-to-vis-rec.gif) |
 
 ### Creating a classifier with Watson Visual Recognition
 
