@@ -1,4 +1,5 @@
 *Read this in other languages: [中国](README-cn.md),[日本](README-ja.md).*
+
 [![Build Status](https://api.travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
 
 # Create a custom Visual Recognition classifier for analyzing vehicle damage
@@ -67,7 +68,7 @@ Perform steps 1-9:
 4. [Install dependencies and run server](#4-install-dependencies-and-run-server)
 5. [Update config values for the Mobile App and install Build dependencies](#5-update-config-values-for-the-mobile-app-and-install-build-dependencies)
 
-6. Perform either 6a or 6b.
+6. Build the mobile app (Perform either 6a or 6b)
 
     6a. [Install dependencies to build the mobile application for Android](#6a-install-dependencies-to-build-the-mobile-application-for-android)
 
@@ -100,15 +101,52 @@ cd watson-vehicle-damage-analyzer
 
 ## 2. Create the Watson Visual Recognition service
 
-Create a Watson Visual Recognition service using IBM Cloud or Watson Studio, a free `lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`.
+Create a Watson Visual Recognition service using IBM Cloud, a free `lite` plan and a `Standard` plan is available for both. Ensure the service is named `wvda-visual-recognition`. Once created, click the *Launch tool* button to start creating your own classifiers.
 
-* [**Watson Visual Recognition on Watson Studio**](https://dataplatform.cloud.ibm.com/)
+* [**Watson Visual Recognition**](https://cloud.ibm.com/catalog/services/visual-recognition)
 
-Under the top bar `Services` -> `Watson services` click `+ Add service` and choose `Visual Recognition`
+|   |   |
+| - | - |
+| ![create-vis-rec-service-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/create-vis-rec-service.gif) | ![add-images-to-vis-rec-gif](https://github.com/IBM/pattern-utils/blob/master/visual-recognition/add-images-to-vis-rec.gif) |
 
-OR
+### Creating a classifier with Watson Visual Recognition
 
-* [**Watson Visual Recognition on IBM Cloud**](https://cloud.ibm.com/catalog/services/visual-recognition)
+> NOTE: The following section is not required to be performed but serves to educate the reader.
+
+For this code pattern, we programmatically call Watson Visual Recognition APIs to create classifiers. See the following code from [watson-visRec-setup.js](https://github.com/IBM/watson-vehicle-damage-analyzer/blob/2da8fe1a0c63a86397a6ff2887267e9be3ec447b/server/lib/watson-visRec-setup.js#L82-L98), further highlighted below:
+
+```javascript
+var createClassifierParams = {
+    name: 'vehicleDamageAnalyzer',
+    BrokenWindshield_positive_examples: fs.createReadStream('./data/BrokenWindshield.zip'),
+    FlatTire_positive_examples: fs.createReadStream('./data/FlatTire.zip'),
+    MotorcycleAccident_positive_examples: fs.createReadStream('./data/MotorcycleAccident.zip'),
+    Vandalism_positive_examples: fs.createReadStream('./data/Vandalism.zip'),
+    negative_examples: fs.createReadStream('./data/Negatives.zip')
+    }
+this.vizRecClient.createClassifier(createClassifierParams, (err, response) => {
+    if (err) {
+    console.error('Failed to create VisualRecognition classifier.');
+    return reject(err);
+    } else {
+    console.log('Created VisualRecognition classifier: ', response);
+    resolve(response);
+    }
+});
+```
+
+Since the server side application creates these classifiers upon start up we do not need to create them ourselves. If this was not the case, we could use the Watson Visual Recognition Tool provided by Watson Studio, or even use cURL calls, like so:
+
+```bash
+curl -X POST -u "apikey:{your_api_key}" \
+--form "BrokenWindshield_positive_examples=@BrokenWindshield.zip" \
+--form "FlatTire_positive_examples=@FlatTire.zip" \
+--form "MotorcycleAccident_positive_examples=@MotorcycleAccident.zip" \
+--form "Vandalism_positive_examples=@Vandalism.zip" \
+--form "negative_examples=@Negatives.zip" \
+--form "name=vehicleDamageAnalyzer" \
+"https://gateway.watsonplatform.net/visual-recognition/api/v3/classifiers?version=2018-03-19"
+```
 
 ## 3. Add Visual Recoginition API key to .env file
 
