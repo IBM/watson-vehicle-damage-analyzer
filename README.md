@@ -1,3 +1,7 @@
+# WARNING: This repository is no longer maintained :warning:
+
+> This repository will not be updated due to legal issues. The repository will be kept available in read-only mode. 
+
 *Read this in other languages: [中国](README-cn.md),[日本](README-ja.md).*
 
 [![Build Status](https://api.travis-ci.org/IBM/watson-vehicle-damage-analyzer.svg?branch=master)](https://travis-ci.org/IBM/watson-vehicle-damage-analyzer)
