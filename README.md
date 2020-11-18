@@ -1,6 +1,6 @@
 # WARNING: This repository is no longer maintained :warning:
 
-> This repository will not be updated due to legal issues. The repository will be kept available in read-only mode. 
+> This repository will not be updated. The repository will be kept available in read-only mode. 
 
 *Read this in other languages: [中国](README-cn.md),[日本](README-ja.md).*
 
